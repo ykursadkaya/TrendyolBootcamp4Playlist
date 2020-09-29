@@ -103,11 +103,7 @@ public class PlaylistController
 			playlistService.deleteTrack(playlistId, track);
 			return ResponseEntity.ok().build();
 		}
-		catch (PlaylistNotFoundException e)
-		{
-			return ResponseEntity.notFound().build();
-		}
-		catch (TrackNotFoundException e)
+		catch (PlaylistNotFoundException | TrackNotFoundException e)
 		{
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}
